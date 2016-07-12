@@ -1,0 +1,92 @@
+#fh5co-footer .contact-info li i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 22px;
+    color: #1fb5f6;
+}
+
+#fh5co-footer .section-title {
+    font-size: 22px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 20px;
+    }
+
+
+#fh5co-footer .section-title:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 35px;
+    height: 2px;
+    background: #1fb5f6;
+}
+
+
+
+.icon-map-marker:before {
+    content: "\f041";
+}
+.icon-phone:before {
+    content: "\e600";
+}
+.icon-envelope:before {
+    content: "\e086";
+}
+
+.icon-globe2:before {
+    content: "\e078";
+}
+
+#fh5co-footer .social-media li a {
+    color: #1fb5f6;
+}
+
+#fh5co-footer #btn-submit {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: #ff3b30 !important;
+}
+
+#fh5co-footer .contact-form .form-group textarea {
+    color: #fff;
+    background: transparent;
+    border: none;
+    background: #485b71;
+    box-shadow: none;
+}
+
+#fh5co-footer .contact-form .form-group input {
+    color: #fff;
+    background: transparent;
+    border: none;
+    background: #485b71;
+    box-shadow: none;
+}
+
+#fh5co-services, #fh5co-testimony, #fh5co-explore, #fh5co-faq, #fh5co-team, #fh5co-trusted, #fh5co-footer {
+    padding: 5em 0;
+}
+
+#fh5co-footer .contact-info li i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 22px;
+    color: #1fb5f6;
+}
+
+#fh5co-footer .contact-info {
+    margin: 0 0 60px 0;
+    padding: 0;
+}
+
+.fh5co-p{
+	margin-bottom: 25px;
+}
+
+#fh5co-footer a {
+    color: #74889e;
+}
