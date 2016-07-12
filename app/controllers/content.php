@@ -16,7 +16,6 @@ class Content extends Public_Controller{
         $data['categories']=$this->category_model->getHomeCategories();
         $cat=$this->category_model->categorylist();
         
-        $data['allcategories']=$this->getCategoryArray($cat);
 //        echo "<pre>";print_r($data);die();
         $city=$this->user_model->getCitylist();
         $c=array();
@@ -32,17 +31,6 @@ class Content extends Public_Controller{
         
     }
     
-    function getCategoryArray($arr){
-        $cat_arr=array();
-        $data_arr=array();
-        foreach($arr as $val){
-            if($val['int_parent_id']==0){
-                $data_arr[$val['int_category_id']]['data']=$val;
-            }else{
-                
-            }
-        }
-    }
     
     function getSearchResult(){
         
@@ -66,9 +54,9 @@ class Content extends Public_Controller{
         }
     }
     
-    function sellerSearch(){
+    function sellerSearch($offset){
         $this->load->model('user_model');        
-        $data=$this->user_model->getSellerSearchList();
+        $data=$this->user_model->getSellerSearchList($offset);
         
         echo json_encode($data);
     }

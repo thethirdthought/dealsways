@@ -128,7 +128,7 @@ class User_model extends CI_Model{
             return $query->result_array();
         }
         
-        function getSellerSearchList(){
+        function getSellerSearchList($offset=''){
             $search_data=$this->session->userdata('search');
  //            $search_data['search_city'],
 //            $search_data['search_product'],
@@ -141,6 +141,11 @@ class User_model extends CI_Model{
             if($search_data['search_product'])
                 $sql.=" And ( a.txt_keywords like '%".$search_data['search_product']."%' OR p.txt_product_name like '%".$search_data['search_product']."%' ) ";
             $sql.=" group by a.int_seller_id";
+            if($offset!=''){
+                $limit=1;
+                $offset=$offset*$limit;
+                $sql.=" LIMIT ".$offset.",".$limit;
+            }
             $query=$this->db->query($sql);
             return $query->result_array();
         }

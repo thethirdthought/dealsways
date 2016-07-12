@@ -170,7 +170,7 @@
                     </aside>
                 </div>
                 <!--/.page-side-bar-->
-                <div class="col-sm-9 page-content col-thin-left">
+                <div class="col-sm-9 page-content col-thin-left" scroll >
                     <div class="category-list">
                         <div class="tab-box ">
 
@@ -237,13 +237,6 @@
                         <div class="menu-overly-mask"></div>
                         <!-- Mobile Filter bar End-->
 
-                        <div class="adds-wrapper" ng-if="!sellers">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="allAds">
-                                    <div id='loading text-center'> <br> <img class='center-block' src='../../images/loading.gif' alt='Loading' /> <br>  </div>
-                                </div>
-                            </div>
-                        </div>
                         <!--/.adds-wrapper-->
                         <div class="adds-wrapper jobs-list" ng-init="getAll()" ng-if="sellers!=''">
                             
@@ -274,6 +267,14 @@
                                         </div>
                                     </div>
                                 </div>
+                        </div>
+                        
+                         <div class="adds-wrapper" id="seller_loader" ng-if="sellers_loader==1">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="allAds">
+                                    <div id='loading text-center'> <br> <img class='center-block' src='../../images/loading.gif' alt='Loading' /> <br>  </div>
+                                </div>
+                            </div>
                         </div>
 
 <!--                        <div class="tab-box  save-search-bar text-center"><a href=""> <i class=" icon-star-empty"></i>
@@ -451,4 +452,9 @@
             
         });
     })
+    var lastoffset="";
+    var totalseller=<?php echo $search_data['total_seller']?>;
+    $(document).ready(function(){
+        lastoffset=document.getElementById('seller_loader').offsetTop;
+    });
 </script>
