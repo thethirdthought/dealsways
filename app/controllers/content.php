@@ -13,16 +13,18 @@ class Content extends Public_Controller{
                 
         $this->load->model('category_model');
         $this->load->model('user_model');
+        $this->load->model('location_model');
         $data['categories']=$this->category_model->getHomeCategories();
         $cat=$this->category_model->categorylist();
         
         $data['allcategories']=$this->getCategoryArray($cat);
 //        echo "<pre>";print_r($data);die();
-        $city=$this->user_model->getCitylist();
+        $city=$this->location_model->get_all_cities();
+//        echo '<pre>';print_r($city);exit;
         $c=array();
         foreach($city as $val){
             
-             $c[]=$val['txt_city1'];
+             $c[]=$val['name'];
         }
         $data['city']=$c;
 //        echo "<pre>";print_r($data);die();

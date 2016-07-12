@@ -113,6 +113,8 @@ class User extends CI_Controller{
     }
 
     public function product_register() {
+        $this->load->model('location_model');
+        $data['countries']=$this->location_model->get_all_countries();
         $data["page"] = "product_register";
         $this->load->view('seller/page', $data);
     }

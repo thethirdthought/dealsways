@@ -24,6 +24,7 @@
         <!-- styles needed for carousel slider -->
         <link href="<?php echo base_url() ?>assets/css/owl.carousel.css" rel="stylesheet">
         <link href="<?php echo base_url() ?>assets/css/owl.theme.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>plugins/select2/select2.min.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. -->
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,6 +34,7 @@
         <![endif]-->
         <script src="<?php echo base_url() ?>assets/js/jquery/1.10.1/jquery-1.10.1.min.js"></script>
         <script src="<?php echo base_url() ?>jQuery-Wizard-Plugin-master/dist/jquery.wizard.js"></script>
+        <script src="<?php echo base_url() ?>plugins/select2/select2.full.min.js"></script>
         <!-- include pace script for automatic web page progress bar  -->
 
         <script>

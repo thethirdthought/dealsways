@@ -145,7 +145,7 @@
             </div>
 
 
-            <div class="col-lg-12 content-box ">
+<!--            <div class="col-lg-12 content-box ">
                 <div class="row row-featured">
 
                     <div style="clear: both"></div>
@@ -156,7 +156,7 @@
                         <div class="">
                             <div class="tab-lite">
 
-                                <!-- Nav tabs -->
+                                 Nav tabs 
                                 <ul class="nav nav-tabs " role="tablist">
                                     <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1"
                                                                               role="tab" data-toggle="tab"><i
@@ -169,7 +169,7 @@
                                     </li>
                                 </ul>
 
-                                <!-- Tab panes -->
+                                 Tab panes 
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="tab1">
 
@@ -367,7 +367,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
 
 
             <div class="row">
