@@ -261,34 +261,46 @@
                     <!--/.adds-wrapper-->
                     <div class="adds-wrapper jobs-list" ng-init="getAll()" ng-if="sellers != ''">
 
-                        <div class="item-list job-item" ng-repeat="d in sellers">
-                            <div class="col-sm-2  col-xs-2 no-padding photobox">
-                                <div class="add-image"><a href="">         
-                                        <img ng-if="d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url(); ?>{{d.txt_org_logo}}" alt="company logo">
-                                        <img ng-if="!d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url(); ?>images/no_logo.jpg" alt="company logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-10  col-xs-10  add-desc-box">
-                                <div class="add-details jobs-item">
-                                    <h5 class="company-title "><a href="#">{{d.txt_name}}</a></h5>
-                                    <h4 class="job-title"><a href="job-details.html"> {{d.txt_organization_name}} </a></h4>
-                                    <span class="info-row">  
-                                        <span class="item-location"><i class="fa fa-map-marker"></i> {{d.txt_address1}},{{d.txt_city1}} </span>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span class=" salary"><i class="fa fa-phone"> </i> {{d.txt_phone1}}</span>
-                                    </span>
-                                    <div class="jobs-desc">{{d.txt_description}} </div>
-                                    <div>
-                                        <span class="info-row"> Estd.in {{d.txt_establish_year}} &nbsp;&nbsp;&nbsp; 
-                                            <span class="info-row">{{d.int_no_of_ratings}} Ratings </span>
+                        <!--/.adds-wrapper-->
+                        <div class="adds-wrapper jobs-list" ng-init="getAll()" ng-if="sellers!=''">
+                            
+                                <div class="item-list job-item" ng-repeat="d in sellers">
+                                    <div class="col-sm-2  col-xs-2 no-padding photobox">
+                                        <div class="add-image"><a href="">         
+                                            <img ng-if="d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url();?>{{d.txt_org_logo}}" alt="company logo">
+                                            <img ng-if="!d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url();?>images/no_logo.jpg" alt="company logo">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-10  col-xs-10  add-desc-box">
+                                        <div class="add-details jobs-item">
+                                            <h5 class="company-title "><a href="#">{{d.txt_name}}</a></h5>
+                                                <h4 class="job-title"><a href="job-details.html"> {{d.txt_organization_name}} </a></h4>
+                                                <span class="info-row">  
+                                                    <span class="item-location"><i class="fa fa-map-marker"></i> {{d.txt_address1}},{{d.txt_city1}} </span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <span class=" salary"><i class="fa fa-phone"> </i> {{d.txt_phone1}}</span>
+                                                </span>
+                                            <div class="jobs-desc">{{d.txt_description}} </div>
+                                            <div>
+                                                <span class="info-row"> Estd.in {{d.txt_establish_year}} &nbsp;&nbsp;&nbsp; 
+                                                    <span class="info-row">{{d.int_no_of_ratings}} Ratings </span>
 
-                                        </span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        
+                         <div class="adds-wrapper" id="seller_loader" ng-if="sellers_loader==1">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="allAds">
+                                    <div id='loading text-center'> <br> <img class='center-block' src='../../images/loading.gif' alt='Loading' /> <br>  </div>
+                                </div>
+                            </div>
+                        </div>
 
 <!--                        <div class="tab-box  save-search-bar text-center"><a href=""> <i class=" icon-star-empty"></i>
                             Save Search </a></div>-->
@@ -465,6 +477,11 @@
 
         });
     })
+    var lastoffset="";
+    var totalseller=<?php echo $search_data['total_seller']?>;
+    $(document).ready(function(){
+        lastoffset=document.getElementById('seller_loader').offsetTop;
+    });
 </script>
 <script>
     var usastates1 =<?php echo json_encode($cities); ?>;
@@ -535,3 +552,4 @@
         }
     }
 </script>
+

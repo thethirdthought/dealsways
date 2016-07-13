@@ -80,11 +80,11 @@ class Content extends Public_Controller {
             redirect('content/index', 'refresh');
         }
     }
-
-    function sellerSearch() {
-        $this->load->model('user_model');
-        $data = $this->user_model->getSellerSearchList();
-
+    
+    function sellerSearch($offset){
+        $this->load->model('user_model');        
+        $data=$this->user_model->getSellerSearchList($offset);
+        
         echo json_encode($data);
     }
 
