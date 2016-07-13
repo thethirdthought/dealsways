@@ -183,21 +183,14 @@
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
                                                     <div class="col-sm-4">
-                                                        <label class="" for="sup_address_1">Primary Address</label>
+                                                        <label class="sr" for="sup_country">Primary Country</label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="txt_address1" placeholder="Primary Address " class="form-last-name form-control require" id="sup_address_1">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="form-group col-sm-12">
-                                                    <div class="col-sm-4">
-                                                        <label class="sr" for="sup_city">Primary City</label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="txt_city1" placeholder="City" class="form-last-name form-control require" id="sup_city">
+                                                        <select type="text" name="txt_country1"  class="form-last-name form-control require" id="p_sup_country">
+                                                            <?php foreach ($countries as $country) {  ?>
+                                                            <option value="<?php echo $country['id'] ?>"><?php echo $country['name'] ?></option>
+                                                           <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -207,20 +200,36 @@
                                                         <label class="sr" for="sup_state">Primary State</label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="txt_state1" placeholder="State" class="form-last-name form-control require" id="sup_state">
+                                                        <select type="text" name="txt_state1" placeholder="State" class="form-last-name form-control require" id="p_sup_state">
+                                                            
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
                                                     <div class="col-sm-4">
-                                                        <label class="sr" for="sup_country">Primary Country</label>
+                                                        <label class="sr" for="sup_city">Primary City</label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="txt_country1" placeholder="Country" class="form-last-name form-control require" id="sup_country">
+                                                        <select type="text" name="txt_city1" class="form-last-name form-control require" id="p_sup_city">
+                                                            
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-12">
+                                                    <div class="col-sm-4">
+                                                        <label class="" for="sup_address_1">Primary Address</label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" name="txt_address1" placeholder="Primary Address " class="form-last-name form-control require" id="sup_address_1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
                                                     <div class="col-sm-4">
@@ -234,21 +243,10 @@
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
                                                     <div class="col-sm-4">
-                                                        <label class="" for="sup_address_1">Secondary Address</label>
+                                                        <label class="sr" for="sup_country">Country</label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="txt_address2" placeholder="Address" class="form-last-name form-control" id="sup_address_1">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="form-group col-sm-12">
-                                                    <div class="col-sm-4">
-                                                        <label class="sr" for="sup_city">Secondary City</label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="txt_city2" placeholder="City" class="form-last-name form-control" id="sup_city">
+                                                        <input type="text" name="txt_country2" placeholder="Country" class="form-last-name form-control" id="sup_country">
                                                     </div>
                                                 </div>
                                             </div>
@@ -265,10 +263,20 @@
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
                                                     <div class="col-sm-4">
-                                                        <label class="sr" for="sup_country">Country</label>
+                                                        <label class="sr" for="sup_city">Secondary City</label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="txt_country2" placeholder="Country" class="form-last-name form-control" id="sup_country">
+                                                        <input type="text" name="txt_city2" placeholder="City" class="form-last-name form-control" id="sup_city">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-12">
+                                                    <div class="col-sm-4">
+                                                        <label class="" for="sup_address_1">Secondary Address</label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" name="txt_address2" placeholder="Address" class="form-last-name form-control" id="sup_address_1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -651,3 +659,57 @@
 
 </div>
 
+<script>
+//    $('#p_sup_country').select2();
+    $('#p_sup_country').change(function(){
+//        alert();
+        var country=$('#p_sup_country').val();
+//        alert(country);
+        getState(country,'sup_state');
+    });
+    $('#sup_country').change(function(){
+//        alert();
+        var country=$('#sup_country').val();
+//        alert(country);
+        getState(country,'sup_state');
+    });
+    $('#p_sup_state').change(function(){
+//        alert();
+        var state=$('#p_sup_state').val();
+//        alert(country);
+        getCity(state,'p_sup_city');
+    });
+    $('#sup_state').change(function(){
+//        alert();
+        var state=$('#sup_state').val();
+//        alert(country);
+        getCity(state,'sup_city');
+    });
+    
+    function getState(country,tagId){
+        $.ajax({
+            url:"<?php echo site_url()?>/location/get_states",
+            data:{'cunt_id':country},
+            type:"POST",
+            dataType:"json",
+            success: function(result) {
+                
+ 	     console.log(result.html);
+                $('#'+tagId).html(result.html);
+          }
+        });
+        }
+    function getCity(state,tagId){
+        $.ajax({
+            url:"<?php echo site_url()?>/location/get_city",
+            data:{'state_id':state},
+            type:"POST",
+            dataType:"json",
+            success: function(result) {
+                
+ 	     console.log(result.html);
+                $('#'+tagId).html(result.html);
+          }
+        });
+    }
+</script>

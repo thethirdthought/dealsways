@@ -11,7 +11,7 @@
                                 <i class="icon-location-2 icon-append"></i>
                                 <input type="text" name="city" id="autocomplete-ajax"
                                        class="form-control locinput input-rel searchtag-input has-icon"
-                                       placeholder="City/Zipcode..." value="">
+                                       placeholder="City" value="">
 
                             </div>
                             <div class="col-lg-4 col-sm-4 search-col relative"><i class="icon-docs icon-append"></i>
@@ -369,7 +369,18 @@
                 </div>
             </div>-->
 
-
+            <?php // echo '<pre>'; print_r($allcategories);exit;
+ $breakPoint=  ceil((count($allcategories))/3);
+ $i=0;$y=0;
+ foreach ($allcategories as $value) {
+     if($y>=$breakPoint){
+         $y=0;
+         $i++;
+     }
+     $list[$i][]=$value;$y++;
+ }
+ 
+            ?>
             <div class="row">
 
 
@@ -378,25 +389,38 @@
                         <h2 class="title-2">Find Classified Ads World Wide </h2>
 
                         <div class="row">
+                            <?php foreach ($list as $listPart) {?>
                             <div class="col-md-4 col-sm-4 ">
-                                <div class="cat-list">
-                                    <h3 class="cat-title"><a href="category.html"><i class="fa fa-car ln-shadow"></i>
-                                        Automobiles <span class="count">277,959</span> </a>
+                                <?php foreach ($listPart as $part) {
+//                                    echo '<pre>';
+// print_r($part);
+//  exit();
+                                    ?>
+                                    <div class="cat-list">
+                                        <h3 class="cat-title"><a href="category.html"><i><img src="<?php echo base_url().$part[0]['txt_filename'] ?>" height="45" width="45"></i>
+                                        <?php echo $part[0]['txt_name'] ?> <span class="count">277,959</span> </a>
 
                                         <span data-target=".cat-id-1" data-toggle="collapse"
                                               class="btn-cat-collapsed collapsed">   <span
                                                 class=" icon-down-open-big"></span> </span>
                                     </h3>
                                     <ul class="cat-collapse collapse in cat-id-1">
-                                        <li><a href="category.html">Car Parts &amp; Accessories</a></li>
-                                        <li><a href="category.html">Campervans &amp; Caravans</a></li>
+                                        <?php for($i=1;$i<count($part);$i++){?>
+                                            <li><a href="category.html"><?php echo $part[$i]['txt_name'] ?></a></li>
+                                        <?php } ?>
+<!--                                        <li><a href="category.html">Campervans &amp; Caravans</a></li>
                                         <li><a href="category.html">Motorbikes &amp; Scooters</a></li>
                                         <li><a href="category.html">Motorbike Parts &amp; Accessories</a></li>
                                         <li><a href="category.html">Vans, Trucks &amp; Plant</a></li>
-                                        <li><a href="category.html">Wanted</a></li>
+                                        <li><a href="category.html">Wanted</a></li>-->
                                     </ul>
-                                </div>
-                                <div class="cat-list">
+                                </div>                
+                                <?php } ?>
+                            </div> 
+                                        <?php } ?>
+                        </div>
+                                
+<!--                                <div class="cat-list">
                                     <h3 class="cat-title"><a href="category.html"><i class="icon-home ln-shadow"></i>
                                         Property <span class="count">228,705</span></a> <span data-target=".cat-id-2"
                                                                                               data-toggle="collapse"
@@ -533,8 +557,8 @@
                                         <li><a href="category.html">Tender Notices </a></li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
+                            </div>-->
+                        <!--</div>-->
                     </div>
 
                     <div class="inner-box has-aff relative">

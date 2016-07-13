@@ -1,5 +1,5 @@
 
-var host="http://localhost:8001/dealways/index.php";
+var host="http://localhost/dealsways/index.php";
 var app = angular.module('myApp', []);
 app.controller('productsCtrl', function($scope, $http) {
     

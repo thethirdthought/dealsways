@@ -1,307 +1,321 @@
 <div class="search-row-wrapper">
-        <div class="container ">
-            <form action="#" method="GET">
-                <div class="col-sm-3">
-                    <input class="form-control keyword" type="text" placeholder="e.g. Mobile Sale">
-                </div>
-                <div class="col-sm-3">
-                    <select class="form-control selecter" name="category" id="search-category">
-                        <option selected="selected" value="">All Categories</option>
-                        <option value="Vehicles" style="background-color:#E9E9E9;font-weight:bold;" disabled="disabled">
-                            - Vehicles -
-                        </option>
-                        <option value="Cars"> Cars</option>
-                        <option value="Commercial vehicles"> Commercial vehicles</option>
-                        <option value="House" style="background-color:#E9E9E9;font-weight:bold;" disabled="disabled"> -
-                            House and Children -
-                        </option>                        
-                        <option value="Other"> Other</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <select class="form-control selecter" name="location" id="id-location">
-                        <option selected="selected" value="">All Locations</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="Other-Locations">Other Locations</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-block btn-primary  "><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </div>
+    <div class="container ">
+        <form action="#" method="GET">
+            <div class="col-sm-3">
+                <input class="form-control keyword" type="text" placeholder="e.g. Mobile Sale">
+            </div>
+            <div class="col-sm-3">
+                <select class="form-control selecter" name="category" id="search-category">
+                    <option selected="selected" style="background-color:#E9E9E9;font-weight:bold;" value="" disabled="disabled">All Categories</option>
+                    <?php foreach ($categories as $catlist) {?>
+                    <option value="<?php echo $catlist['int_category_id'] ?>"> <?php echo $catlist['txt_name'] ?></option>
+                        
+                    <?php }?>
+<!--                    <option value="Vehicles" style="background-color:#E9E9E9;font-weight:bold;" disabled="disabled">
+                        - Vehicles -
+                    </option>
+                    <option value="Commercial vehicles"> Commercial vehicles</option>
+                    <option value="House" style="background-color:#E9E9E9;font-weight:bold;" disabled="disabled"> -
+                        House and Children -
+                    </option>                        
+                    <option value="Other"> Other</option>-->
+                </select>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 search-col relative locationicon">
+                <!--<i class="icon-location-2 icon-append"></i>-->
+                <input type="text" name="city" id="autocomplete-ajax"
+                       class="form-control locinput input-rel searchtag-input has-icon"
+                       placeholder="City" value="">
+
+            </div>
+            <!--            <div class="col-sm-3">
+                            <select class="form-control selecter" name="location" id="id-location">
+                                <option selected="selected" value="">All Locations</option>
+            <?php foreach ($cities as $city) { ?>
+                                        <option value="<?php echo $city['id'] ?>"><?php echo $city['name'] ?></option>
+            <?php } ?>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="DC">District Of Columbia</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                        <option value="Other-Locations">Other Locations</option>
+                            </select>
+                        </div>-->
+            <div class="col-sm-3">
+                <button class="btn btn-block btn-primary  "><i class="fa fa-search"></i></button>
+            </div>
+        </form>
     </div>
+</div>
 
 <div class="main-container" ng-app="myApp" ng-controller="productsCtrl" >
-        <div class="container">
-            <div class="row">
-                <!-- this (.mobile-filter-sidebar) part will be position fixed in mobile version -->
-                <div class="col-sm-3 page-sidebar mobile-filter-sidebar">
-                    <aside>
-                        <div class="inner-box">
-                            <div class="categories-list  list-filter">
-                                <h5 class="list-title"><strong><a href="#">All Categories</a></strong></h5>
-                                <ul class=" list-unstyled">
-                                    <?php foreach($categories as $val){?>
-                                    <li><a href="javascript:void();" class="a-category" id="category_<?php echo $val['int_category_id']?>"><span
-                                            class="title"><?php echo $val['txt_name']?></span><span class="count">&nbsp;</span></a>
+    <div class="container">
+        <div class="row">
+            <!-- this (.mobile-filter-sidebar) part will be position fixed in mobile version -->
+            <div class="col-sm-3 page-sidebar mobile-filter-sidebar">
+                <aside>
+                    <div class="inner-box">
+                        <div class="categories-list  list-filter">
+                            <h5 class="list-title"><strong><a href="#">All Categories</a></strong></h5>
+                            <ul class=" list-unstyled">
+                                <?php foreach ($categories as $val) { ?>
+                                    <li><a href="javascript:void();" class="a-category" id="category_<?php echo $val['int_category_id'] ?>"><span
+                                                class="title"><?php echo $val['txt_name'] ?></span><span class="count">&nbsp;</span></a>
                                     </li>
-                                    <?php }?>
-                                </ul>
-                            </div>
-                            <!--/.categories-list-->
-
-                            <div class="locations-list  list-filter">
-                                <h5 class="list-title"><strong><a href="#">Location</a></strong></h5>
-                                <ul class="browse-list list-unstyled long-list">
-                                    <li><a href="sub-category-sub-location.html"> Atlanta </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Wichita </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Anchorage </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Dallas </a></li>
-                                    <li><a href="sub-category-sub-location.html">New York </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Santa Ana/Anaheim </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Miami </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Virginia Beach </a></li>
-                                    <li><a href="sub-category-sub-location.html"> San Diego </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Boston </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Houston </a></li>
-                                    <li><a href="sub-category-sub-location.html">Salt Lake City </a></li>
-                                    <li><a href="sub-category-sub-location.html"> Other Locations </a></li>
-                                </ul>
-                            </div>
-                            <!--/.locations-list-->
-
-                            <div class="locations-list  list-filter">
-                                <h5 class="list-title"><strong><a href="#">Price range</a></strong></h5>
-
-                                <form role="form" class="form-inline ">
-                                    <div class="form-group col-sm-4 no-padding">
-                                        <input type="text" placeholder="$ 2000 " id="minPrice" class="form-control">
-                                    </div>
-                                    <div class="form-group col-sm-1 no-padding text-center hidden-xs"> -</div>
-                                    <div class="form-group col-sm-4 no-padding">
-                                        <input type="text" placeholder="$ 3000 " id="maxPrice" class="form-control">
-                                    </div>
-                                    <div class="form-group col-sm-3 no-padding">
-                                        <button class="btn btn-default pull-right btn-block-xs" type="submit">GO
-                                        </button>
-                                    </div>
-                                </form>
-                                <div style="clear:both"></div>
-                            </div>
-                            <!--/.list-filter-->
-                            <div class="locations-list  list-filter">
-                                <h5 class="list-title"><strong><a href="#">Seller</a></strong></h5>
-                                <ul class="browse-list list-unstyled long-list">
-                                    <li><a href="sub-category-sub-location.html"><strong>All Ads</strong> <span
-                                            class="count">228,705</span></a></li>
-                                    <li><a href="sub-category-sub-location.html">Business <span
-                                            class="count">28,705</span></a></li>
-                                    <li><a href="sub-category-sub-location.html">Personal <span
-                                            class="count">18,705</span></a></li>
-                                </ul>
-                            </div>
-                            <!--/.list-filter-->
-                            <div class="locations-list  list-filter">
-                                <h5 class="list-title"><strong><a href="#">Condition</a></strong></h5>
-                                <ul class="browse-list list-unstyled long-list">
-                                    <li><a href="sub-category-sub-location.html">New <span class="count">228,705</span></a>
-                                    </li>
-                                    <li><a href="sub-category-sub-location.html">Used <span class="count">28,705</span></a>
-                                    </li>
-                                    <li><a href="sub-category-sub-location.html">None </a></li>
-                                </ul>
-                            </div>
-                            <!--/.list-filter-->
-                            <div style="clear:both"></div>
-                        </div>
-
-                        <!--/.categories-list-->
-                    </aside>
-                </div>
-                <!--/.page-side-bar-->
-                <div class="col-sm-9 page-content col-thin-left">
-                    <div class="category-list">
-                        <div class="tab-box ">
-
-                           <!-- Nav tabs -->
-                            <div class="col-lg-12  box-title no-border">
-                                <div class="inner">
-                                    <h2><span> <?php echo $search_data['product'];?> </span>
-                                        <small> <?php echo $search_data['total_seller'];?> Sellers Found</small>
-
-
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="tab-filter">
-                                <select class="selectpicker" data-style="btn-select" data-width="auto">
-                                    <option>Short by</option>
-                                    <option>Price: Low to High</option>
-                                    <option>Price: High to Low</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--/.tab-box-->
-
-                        <div class="listing-filter">
-                            <div class="pull-left col-xs-6">
-                                <div class="breadcrumb-list"><a href="#" class="current"> <span>All Sellers</span></a> in
-                                    New York <a href="#selectRegion" id="dropdownMenu1" data-toggle="modal"> <span
-                                            class="caret"></span> </a></div>
-                            </div>
-                            <div class="pull-right col-xs-6 text-right listing-view-action"><span
-                                    class="list-view active"><i class="  icon-th"></i></span> <span
-                                    class="compact-view"><i class=" icon-th-list  "></i></span> <span
-                                    class="grid-view "><i class=" icon-th-large "></i></span></div>
-                            <div style="clear:both"></div>
-                        </div>
-                        <!--/.listing-filter-->
-
-
-                        <!-- Mobile Filter bar-->
-                        <div class="mobile-filter-bar col-lg-12  ">
-                            <ul class="list-unstyled list-inline no-margin no-padding">
-                                <li class="filter-toggle">
-                                    <a class="">
-                                        <i class="  icon-th-list"></i>
-                                        Filters
-                                    </a>
-                                </li>
-                                <li>
-
-
-                                    <div class="dropdown">
-                                        <a data-toggle="dropdown" class="dropdown-toggle"><i class="caret "></i> Short
-                                            by </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="" rel="nofollow">Relevance</a></li>
-                                            <li><a href="" rel="nofollow">Date</a></li>
-                                            <li><a href="" rel="nofollow">Company</a></li>
-                                        </ul>
-                                    </div>
-
-                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
-                        <div class="menu-overly-mask"></div>
-                        <!-- Mobile Filter bar End-->
+                        <!--/.categories-list-->
 
-                        <div class="adds-wrapper" ng-if="!sellers">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="allAds">
-                                    <div id='loading text-center'> <br> <img class='center-block' src='../../images/loading.gif' alt='Loading' /> <br>  </div>
+<!--                        <div class="locations-list  list-filter">
+                            <h5 class="list-title"><strong><a href="#">Location</a></strong></h5>
+                            <ul class="browse-list list-unstyled long-list">
+                                <li><a href="sub-category-sub-location.html"> Atlanta </a></li>
+                                <li><a href="sub-category-sub-location.html"> Wichita </a></li>
+                                <li><a href="sub-category-sub-location.html"> Anchorage </a></li>
+                                <li><a href="sub-category-sub-location.html"> Dallas </a></li>
+                                <li><a href="sub-category-sub-location.html">New York </a></li>
+                                <li><a href="sub-category-sub-location.html"> Santa Ana/Anaheim </a></li>
+                                <li><a href="sub-category-sub-location.html"> Miami </a></li>
+                                <li><a href="sub-category-sub-location.html"> Virginia Beach </a></li>
+                                <li><a href="sub-category-sub-location.html"> San Diego </a></li>
+                                <li><a href="sub-category-sub-location.html"> Boston </a></li>
+                                <li><a href="sub-category-sub-location.html"> Houston </a></li>
+                                <li><a href="sub-category-sub-location.html">Salt Lake City </a></li>
+                                <li><a href="sub-category-sub-location.html"> Other Locations </a></li>
+                            </ul>
+                        </div>-->
+                        <!--/.locations-list-->
+
+                        <div class="locations-list  list-filter">
+                            <h5 class="list-title"><strong><a href="#">Price range</a></strong></h5>
+
+                            <form role="form" class="form-inline ">
+                                <div class="form-group col-sm-4 no-padding">
+                                    <input type="text" placeholder="$ 2000 " id="minPrice" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1 no-padding text-center hidden-xs"> -</div>
+                                <div class="form-group col-sm-4 no-padding">
+                                    <input type="text" placeholder="$ 3000 " id="maxPrice" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-3 no-padding">
+                                    <button class="btn btn-default pull-right btn-block-xs" type="submit">GO
+                                    </button>
+                                </div>
+                            </form>
+                            <div style="clear:both"></div>
+                        </div>
+                        <!--/.list-filter-->
+                        <div class="locations-list  list-filter">
+                            <h5 class="list-title"><strong><a href="#">Seller</a></strong></h5>
+                            <ul class="browse-list list-unstyled long-list">
+                                <li><a href="sub-category-sub-location.html"><strong>All Ads</strong> <span
+                                            class="count">228,705</span></a></li>
+                                <li><a href="sub-category-sub-location.html">Business <span
+                                            class="count">28,705</span></a></li>
+                                <li><a href="sub-category-sub-location.html">Personal <span
+                                            class="count">18,705</span></a></li>
+                            </ul>
+                        </div>
+                        <!--/.list-filter-->
+                        <div class="locations-list  list-filter">
+                            <h5 class="list-title"><strong><a href="#">Condition</a></strong></h5>
+                            <ul class="browse-list list-unstyled long-list">
+                                <li><a href="sub-category-sub-location.html">New <span class="count">228,705</span></a>
+                                </li>
+                                <li><a href="sub-category-sub-location.html">Used <span class="count">28,705</span></a>
+                                </li>
+                                <li><a href="sub-category-sub-location.html">None </a></li>
+                            </ul>
+                        </div>
+                        <!--/.list-filter-->
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <!--/.categories-list-->
+                </aside>
+            </div>
+            <!--/.page-side-bar-->
+            <div class="col-sm-9 page-content col-thin-left">
+                <div class="category-list">
+                    <div class="tab-box ">
+
+                        <!-- Nav tabs -->
+                        <div class="col-lg-12  box-title no-border">
+                            <div class="inner">
+                                <h2><span> <?php echo $search_data['product']; ?> </span>
+                                    <small> <?php echo $search_data['total_seller']; ?> Sellers Found</small>
+
+
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="tab-filter">
+                            <select class="selectpicker" data-style="btn-select" data-width="auto">
+                                <option>Short by</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--/.tab-box-->
+
+                    <div class="listing-filter">
+                        <div class="pull-left col-xs-6">
+                            <div class="breadcrumb-list"><a href="#" class="current"> <span>All Sellers</span></a> in
+                                New York <a href="#selectRegion" id="dropdownMenu1" data-toggle="modal"> <span
+                                        class="caret"></span> </a></div>
+                        </div>
+                        <div class="pull-right col-xs-6 text-right listing-view-action"><span
+                                class="list-view active"><i class="  icon-th"></i></span> <span
+                                class="compact-view"><i class=" icon-th-list  "></i></span> <span
+                                class="grid-view "><i class=" icon-th-large "></i></span></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <!--/.listing-filter-->
+
+
+                    <!-- Mobile Filter bar-->
+                    <div class="mobile-filter-bar col-lg-12  ">
+                        <ul class="list-unstyled list-inline no-margin no-padding">
+                            <li class="filter-toggle">
+                                <a class="">
+                                    <i class="  icon-th-list"></i>
+                                    Filters
+                                </a>
+                            </li>
+                            <li>
+
+
+                                <div class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle"><i class="caret "></i> Short
+                                        by </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="" rel="nofollow">Relevance</a></li>
+                                        <li><a href="" rel="nofollow">Date</a></li>
+                                        <li><a href="" rel="nofollow">Company</a></li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-overly-mask"></div>
+                    <!-- Mobile Filter bar End-->
+
+                    <div class="adds-wrapper" ng-if="!sellers">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="allAds">
+                                <div id='loading text-center'> <br> <img class='center-block' src='../../images/loading.gif' alt='Loading' /> <br>  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.adds-wrapper-->
+                    <div class="adds-wrapper jobs-list" ng-init="getAll()" ng-if="sellers != ''">
+
+                        <div class="item-list job-item" ng-repeat="d in sellers">
+                            <div class="col-sm-2  col-xs-2 no-padding photobox">
+                                <div class="add-image"><a href="">         
+                                        <img ng-if="d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url(); ?>{{d.txt_org_logo}}" alt="company logo">
+                                        <img ng-if="!d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url(); ?>images/no_logo.jpg" alt="company logo">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-10  col-xs-10  add-desc-box">
+                                <div class="add-details jobs-item">
+                                    <h5 class="company-title "><a href="#">{{d.txt_name}}</a></h5>
+                                    <h4 class="job-title"><a href="job-details.html"> {{d.txt_organization_name}} </a></h4>
+                                    <span class="info-row">  
+                                        <span class="item-location"><i class="fa fa-map-marker"></i> {{d.txt_address1}},{{d.txt_city1}} </span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class=" salary"><i class="fa fa-phone"> </i> {{d.txt_phone1}}</span>
+                                    </span>
+                                    <div class="jobs-desc">{{d.txt_description}} </div>
+                                    <div>
+                                        <span class="info-row"> Estd.in {{d.txt_establish_year}} &nbsp;&nbsp;&nbsp; 
+                                            <span class="info-row">{{d.int_no_of_ratings}} Ratings </span>
+
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!--/.adds-wrapper-->
-                        <div class="adds-wrapper jobs-list" ng-init="getAll()" ng-if="sellers!=''">
-                            
-                                <div class="item-list job-item" ng-repeat="d in sellers">
-                                    <div class="col-sm-2  col-xs-2 no-padding photobox">
-                                        <div class="add-image"><a href="">         
-                                            <img ng-if="d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url();?>{{d.txt_org_logo}}" alt="company logo">
-                                            <img ng-if="!d.txt_org_logo" class="thumbnail no-margin" src="<?php echo base_url();?>images/no_logo.jpg" alt="company logo">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-10  col-xs-10  add-desc-box">
-                                        <div class="add-details jobs-item">
-                                            <h5 class="company-title "><a href="#">{{d.txt_name}}</a></h5>
-                                                <h4 class="job-title"><a href="job-details.html"> {{d.txt_organization_name}} </a></h4>
-                                                <span class="info-row">  
-                                                    <span class="item-location"><i class="fa fa-map-marker"></i> {{d.txt_address1}},{{d.txt_city1}} </span>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <span class=" salary"><i class="fa fa-phone"> </i> {{d.txt_phone1}}</span>
-                                                </span>
-                                            <div class="jobs-desc">{{d.txt_description}} </div>
-                                            <div>
-                                                <span class="info-row"> Estd.in {{d.txt_establish_year}} &nbsp;&nbsp;&nbsp; 
-                                                    <span class="info-row">{{d.int_no_of_ratings}} Ratings </span>
-
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
+                    </div>
 
 <!--                        <div class="tab-box  save-search-bar text-center"><a href=""> <i class=" icon-star-empty"></i>
                             Save Search </a></div>-->
-                    </div>
-<!--                    <div class="pagination-bar text-center">
-                        <ul class="pagination">
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"> ...</a></li>
-                            <li><a class="pagination-btn" href="#">Next &raquo;</a></li>
-                        </ul>
-                    </div>-->
-                    <!--/.pagination-bar -->
-
-                   
-
                 </div>
-                <!--/.page-content-->
+                <!--                    <div class="pagination-bar text-center">
+                                        <ul class="pagination">
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#"> ...</a></li>
+                                            <li><a class="pagination-btn" href="#">Next &raquo;</a></li>
+                                        </ul>
+                                    </div>-->
+                <!--/.pagination-bar -->
+
+
 
             </div>
+            <!--/.page-content-->
+
         </div>
     </div>
-    <!-- /.main-container -->
-    <!-- Modal Change City -->
+</div>
+<!-- /.main-container -->
+<!-- Modal Change City -->
 
 <div class="modal fade" id="selectRegion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -436,19 +450,88 @@
     </div>
 </div>
 <div style="display:none;">
-    <form method="POST" action="<?php echo base_url()."/content/getSearchResult"?>">
+    <form method="POST" action="<?php echo base_url() . "/content/getSearchResult" ?>">
         <input type="text" name="city" id="hidden_city">
         <input type="text" name="product" id="hidden_product">
         <input type="text" name="category" id="hidden_category">
     </form>
 </div>    
 <script>
-    $(document).ready(function(){
-                
-        $(".a-category").click(function(){
-            var id=this.id.split("_");
+    $(document).ready(function() {
+
+        $(".a-category").click(function() {
+            var id = this.id.split("_");
             $("#hidden_category").val(id[1]);
-            
+
         });
     })
+</script>
+<script>
+    var usastates1 =<?php echo json_encode($cities); ?>;
+    $(function() {
+        'use strict';
+
+        var usastatesArray = $.map(usastates1, function(value, key) {
+            return {value: value, data: value};
+        });
+        // Setup jQuery ajax mock:
+        $.mockjax({
+            url: '*',
+            responseTime: 2000,
+            response: function(settings) {
+                var query = settings.data.query,
+                        queryLowerCase = query.toLowerCase(),
+                        re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi'),
+                        suggestions = $.grep(usastatesArray, function(country) {
+                            // return country.value.toLowerCase().indexOf(queryLowerCase) === 0;
+                            return re.test(country.value);
+                        }),
+                        response = {
+                            query: query,
+                            suggestions: suggestions
+                        };
+
+                this.responseText = JSON.stringify(response);
+            }
+        });
+
+
+        // Initialize ajax autocomplete:
+        $('#autocomplete-ajax').autocomplete({
+            // serviceUrl: '/autosuggest/service/url',
+            lookup: usastatesArray,
+            lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
+                var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
+                return re.test(suggestion.value);
+            },
+            onSelect: function(suggestion) {
+                $('#selction-ajax').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            },
+            onHint: function(hint) {
+                $('#autocomplete-ajax-x').val(hint);
+
+            },
+            onInvalidateSelection: function() {
+                $('#selction-ajax').html('You selected: none');
+            }
+        });
+
+
+    });
+
+
+
+
+
+
+
+
+
+    function validateSearch() {
+        if ($("#autocomplete-ajax").val() == '' && $("#product").val == '') {
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>
