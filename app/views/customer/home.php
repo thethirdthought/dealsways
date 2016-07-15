@@ -12,6 +12,7 @@
                                 <input type="text" name="city" id="autocomplete-ajax"
                                        class="form-control locinput input-rel searchtag-input has-icon"
                                        placeholder="City" value="">
+                                <input type="hidden" value="" name="city_id" id="city_id">
 
                             </div>
                             <div class="col-lg-4 col-sm-4 search-col relative"><i class="icon-docs icon-append"></i>
@@ -386,7 +387,7 @@
 
                 <div class="col-sm-9 page-content col-thin-right">
                     <div class="inner-box category-content">
-                        <h2 class="title-2">Find Classified Ads World Wide </h2>
+                        <h2 class="title-2">Find Products World Wide </h2>
 
                         <div class="row">
                             <?php foreach ($list as $listPart) {?>
@@ -705,7 +706,8 @@
    $(function () {
     'use strict';
 
-    var usastatesArray = $.map(usastates1, function (value, key) { return { value: value, data: value }; });
+    var usastatesArray = $.map(usastates1, function (value, key) { return { value: value, data: key }; });
+    console.log(usastatesArray);
     // Setup jQuery ajax mock:
     $.mockjax({
         url: '*',
@@ -737,7 +739,7 @@
             return re.test(suggestion.value);
         },
         onSelect: function(suggestion) {
-            $('#selction-ajax').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            $('#city_id').val(suggestion.data);
         },
         onHint: function (hint) {
             $('#autocomplete-ajax-x').val(hint);

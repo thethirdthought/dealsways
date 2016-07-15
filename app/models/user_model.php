@@ -132,7 +132,7 @@ class User_model extends CI_Model{
             $search_data=$this->session->userdata('search');
  //            $search_data['search_city'],
 //            $search_data['search_product'],
-            $sql="Select a.txt_name,a.txt_description,a.txt_phone1,a.txt_phone2,a.txt_address1,a.txt_pincode1,a.txt_city1,a.txt_state1,a.txt_country1,a.txt_organization_name,a.txt_website_url,a.int_home_delivery,a.txt_rating,a.txt_establish_year,a.txt_org_logo,a.int_no_of_ratings";               
+            $sql="Select a.int_seller_id,a.txt_name,a.txt_description,a.txt_phone1,a.txt_phone2,a.txt_address1,a.txt_pincode1,a.txt_city1,a.txt_state1,a.txt_country1,a.txt_organization_name,a.txt_website_url,a.int_home_delivery,a.txt_rating,a.txt_establish_year,a.txt_org_logo,a.int_no_of_ratings";               
             $sql.=" from ".$this->table." a inner join ".$this->table_user." u on a.int_user_id=u.int_user_id ";
             $sql.=" inner join tab_products p on a.int_seller_id=p.int_seller_id ";
             $sql.=" where u.int_is_active=1 ";
@@ -146,6 +146,12 @@ class User_model extends CI_Model{
                 $offset=$offset*$limit;
                 $sql.=" LIMIT ".$offset.",".$limit;
             }
+            $query=$this->db->query($sql);
+            return $query->result_array();
+        }
+        
+        public function getSellerById($param) {
+            $sql="SELECT * FROM tab_seller WHERE int_seller_id = $param";
             $query=$this->db->query($sql);
             return $query->result_array();
         }

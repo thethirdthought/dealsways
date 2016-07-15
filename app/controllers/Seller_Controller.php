@@ -6,11 +6,13 @@ class Seller_Controller extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-                 $usersession=$this->session->userdata('logged_in');
-                if($this->session->userdata('logged_in')==false || $usersession['int_user_type']!=2)
-		   {
-			 redirect('user/login', 'refresh');		   }
+        $usersession = $this->session->userdata('logged_in');
+        if ($this->session->userdata('logged_in') == false || $usersession['int_user_type'] != 2) {
+            redirect('user/login', 'refresh');
+        }
     }
+
+    
 
 }
 

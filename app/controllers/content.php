@@ -26,7 +26,7 @@ class Content extends Public_Controller {
         $c = array();
         foreach ($city as $val) {
 
-            $c[] = $val['name'];
+            $c[$val['id']] = $val['name'];
         }
         $data['city'] = $c;
 //        echo "<pre>";print_r($data);die();
@@ -54,6 +54,7 @@ class Content extends Public_Controller {
 
         if ($this->input->post('product') || $this->input->post('city')) {
             $sess_array['search_city'] = $this->input->post('city');
+            $sess_array['search_city_id'] = $this->input->post('city_id');
             $sess_array['search_product'] = $this->input->post('product');
 
             $this->session->set_userdata('search', $sess_array);
@@ -66,7 +67,7 @@ class Content extends Public_Controller {
             $c = array();
             foreach ($city as $val) {
 
-                $c[] = $val['name'];
+                $c[$val['id']] = $val['name'];
             }
             $data['cities'] = $c;
 
@@ -86,6 +87,15 @@ class Content extends Public_Controller {
         $data=$this->user_model->getSellerSearchList($offset);
         
         echo json_encode($data);
+    }
+    public function seller_datails() {
+        $seller_id = $this->uri->segment(3);
+        $this->load->model('user_model');
+        $seller_details=$this->user_model->getSellerById($seller_id);
+        $data['seller_details'] = $seller_details[0];
+        $data['page_title'] = "Search";
+        $data['page'] = "seller_details";
+        $this->load->view('customer/page', $data);
     }
 
 }
